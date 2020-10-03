@@ -120,6 +120,7 @@ public class Server
             {
                 {(int) ClientPackets.WelcomeReceived, ServerHandle.WelcomeReceived},
                 {(int) ClientPackets.PlayerMovement, ServerHandle.PlayerMovement},
+                {(int) ClientPackets.PlayerShoot, ServerHandle.PlayerShoot}
             };
             Console.WriteLine("Initialized packets.");
         }

@@ -48,6 +48,34 @@ public class ServerSend
             }
         }
 
+        public static void PlayerDisconnected(int playerId)
+        {
+            using (Packet packet = new Packet((int) ServerPackets.PlayerDisconnected))
+            {
+                packet.Write(playerId);
+                SendTcpDataToAll(packet);
+            }
+        }
+
+        public static void PlayerHealth(Player player)
+        {
+            using (Packet packet = new Packet((int) ServerPackets.PlayerHealth))
+            {
+                packet.Write(player.id);
+                packet.Write(player.health);
+                SendTcpDataToAll(packet);
+            }
+        }
+
+        public static void PlayerRespawned(Player player)
+        {
+            using (Packet packet = new Packet((int) ServerPackets.PlayerRespawned))
+            {
+                packet.Write(player.id);
+                SendTcpDataToAll(packet);
+            }
+        }
+
         private static void SendTcpData(int toClient, Packet packet)
         {
             packet.WriteLength();
